@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AirQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BGDay" translatesAutoresizingMaskIntoConstraints="NO" id="tF3-1e-SWR">
+                                <rect key="frame" x="-3325" y="0.0" width="3700" height="667"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmogDay" translatesAutoresizingMaskIntoConstraints="NO" id="pOC-DK-01F">
+                                <rect key="frame" x="-5025" y="0.0" width="5400" height="667"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="5400" id="M3I-rz-WqZ"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-xJ-zdY">
+                                <rect key="frame" x="32" y="46.5" width="311" height="241"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almaty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5Q-Zz-1gh">
+                                        <rect key="frame" x="104.5" y="0.0" width="102" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unhealthy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xol-lb-QQi">
+                                        <rect key="frame" x="117" y="51" width="77.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="PR0-ZP-hkk">
+                                        <rect key="frame" x="62" y="81.5" width="187" height="119.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="158" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCU-dx-4FC">
+                                                <rect key="frame" x="0.0" y="0.0" width="153.5" height="119.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AQI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3m-PB-ReK">
+                                                <rect key="frame" x="153.5" y="76" width="33.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="p4o-dG-EZu">
+                                        <rect key="frame" x="-2" y="211" width="315" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="lkg-K1-Zsf"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="moveSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="T3f-gy-zjD"/>
+                                            <action selector="touchUpSlider:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DAe-C7-Wk2"/>
+                                            <action selector="touchUpSlider:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="nbR-I7-yNM"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="p4o-dG-EZu" secondAttribute="trailing" id="1Zp-qh-cpg"/>
+                                    <constraint firstItem="p4o-dG-EZu" firstAttribute="leading" secondItem="rCh-xJ-zdY" secondAttribute="leading" id="gOL-VD-5gk"/>
+                                </constraints>
+                            </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dtk-i6-xQs">
+                                <rect key="frame" x="169" y="204" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rCh-xJ-zdY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="0tp-hf-SQt"/>
+                            <constraint firstItem="pOC-DK-01F" firstAttribute="top" secondItem="tF3-1e-SWR" secondAttribute="top" id="4BQ-AA-fKj"/>
+                            <constraint firstItem="tF3-1e-SWR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="65f-XA-NEP"/>
+                            <constraint firstAttribute="bottom" secondItem="tF3-1e-SWR" secondAttribute="bottom" id="8Dc-q1-nre"/>
+                            <constraint firstItem="pOC-DK-01F" firstAttribute="trailing" secondItem="tF3-1e-SWR" secondAttribute="trailing" id="ChY-oi-uPs"/>
+                            <constraint firstItem="dtk-i6-xQs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GMx-wW-kR1"/>
+                            <constraint firstItem="dtk-i6-xQs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="2/3" id="JNI-hj-RP2"/>
+                            <constraint firstAttribute="trailing" secondItem="tF3-1e-SWR" secondAttribute="trailing" id="SD2-qT-055"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rCh-xJ-zdY" secondAttribute="trailing" constant="32" id="cbB-jE-8qS"/>
+                            <constraint firstItem="rCh-xJ-zdY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1/2" id="ghN-M5-Km8"/>
+                            <constraint firstItem="rCh-xJ-zdY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="noJ-C6-RD0"/>
+                            <constraint firstItem="pOC-DK-01F" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="w06-70-xru"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="dtk-i6-xQs" id="3Y5-Da-CPa"/>
+                        <outlet property="aqiLevelNameLabel" destination="Xol-lb-QQi" id="U6g-vL-RT3"/>
+                        <outlet property="aqiLevelSlider" destination="p4o-dG-EZu" id="WbY-6s-alk"/>
+                        <outlet property="aqiLevelValueLabel" destination="BCU-dx-4FC" id="Zsv-fe-eFJ"/>
+                        <outlet property="cityLabel" destination="T5Q-Zz-1gh" id="bjx-RS-U3M"/>
+                        <outlet property="measureLabel" destination="k3m-PB-ReK" id="J2Y-vB-cug"/>
+                        <outlet property="smogImage" destination="pOC-DK-01F" id="lNK-Ko-g0f"/>
+                        <outlet property="urbanImage" destination="tF3-1e-SWR" id="uJ1-zy-ZU1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.399999999999999" y="93.103448275862078"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BGDay" width="3700" height="1920"/>
+        <image name="SmogDay" width="4644" height="1920"/>
+    </resources>
+</document>
