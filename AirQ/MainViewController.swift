@@ -7,94 +7,98 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
+    private var aqiModel: AQIModel!
+    
     @IBOutlet var urbanImage: UIImageView!
     @IBOutlet var smogImage: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet var cityLabel: UILabel!
-    @IBOutlet var measureLabel: UILabel!
+    @IBOutlet var measurePM25Label: UILabel!
+    @IBOutlet var measurePM10Label: UILabel!
+    @IBOutlet var measureAQILabel: UILabel!
+    
+    @IBOutlet var infoButton: UIButton!
     @IBOutlet var aqiLevelValueLabel: UILabel!
     @IBOutlet var aqiLevelNameLabel: UILabel!
     @IBOutlet var aqiLevelSlider: UISlider!
-    
-    private var aqiData: AQIData!
-    private var aqiLevelValue: Int = 0
-    private var aqiLevelName: String {
-        AQILevel.getAQILevel(forAQIValue: Int(aqiLevelValue)).name
-    }
-    private var city: String = ""
+    @IBOutlet var aqiLevelHealthLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AQIService().fetchAQIData { [weak self] (aqiData) in
-          self?.aqiData = aqiData
+        HTTPService().fetchAQIData { [weak self] (aqiModel) in
+          self?.aqiModel = aqiModel
           DispatchQueue.main.async {
-            self?.reloadData()
             self?.redrawView()
-            self?.loadingData(false)
+            self?.loadingDataInProcess(inProcess: false)
           }
         }
         
-        loadingData(true)
+        loadingDataInProcess(inProcess: true)
         drawGradient4Slider()
-        animateBackGround()
     }
     
-    @IBAction func moveSlider(_ sender: Any) {
-        aqiLevelValue = Int(aqiLevelSlider.value)
-        redrawView()
-    }
-    
-    @IBAction func touchUpSlider(_ sender: Any) {
-        reloadData()
-        redrawView()
-    }
-    
-    private func reloadData() {
-        if let aqi = aqiData?.aqi {
-            self.aqiLevelValue = Int(aqi)
-        }
- 
-        if let city = aqiData?.city?.name {
-            self.city = String(city.prefix(while: { (char) -> Bool in char != "," }))
-        }
-    }
-    
-    private func loadingData(_ isLoading: Bool) {
+    private func loadingDataInProcess(inProcess: Bool) {
+        urbanImage.isHidden = inProcess
+        smogImage.isHidden = inProcess
+        cityLabel.isHidden = inProcess
+        infoButton.isHidden = inProcess
+        measureAQILabel.isHidden = inProcess
+        measurePM10Label.isHidden = inProcess
+        measurePM25Label.isHidden = inProcess
+        aqiLevelValueLabel.isHidden = inProcess
+        aqiLevelNameLabel.isHidden = inProcess
+        aqiLevelSlider.isHidden = inProcess
+        aqiLevelHealthLabel.isHidden = inProcess
         
-        cityLabel.isHidden = isLoading
-        measureLabel.isHidden = isLoading
-        aqiLevelValueLabel.isHidden = isLoading
-        aqiLevelNameLabel.isHidden = isLoading
-        aqiLevelSlider.isHidden = isLoading
-        if isLoading {
+        if inProcess {
             smogImage.alpha = 0.0
             activityIndicator.startAnimating()
         } else {
             activityIndicator.stopAnimating()
+            animateBackGround()
         }
     }
     
+    // TODO: После вызова этого метода слетает анимация
     private func redrawView() {
-        aqiLevelValueLabel.text = String(aqiLevelValue)
-        aqiLevelSlider.value = Float(aqiLevelValue)
-        aqiLevelNameLabel.text = aqiLevelName
-        cityLabel.text = city
+        print("call redrawView")
+        aqiLevelValueLabel.text = String(aqiModel.aqi ?? 0)
+        aqiLevelSlider.value = Float(aqiModel.aqi ?? 0)
+        aqiLevelSlider.thumbTintColor = aqiModel.aqiColor
+        aqiLevelNameLabel.text = aqiModel.aqiName
+        aqiLevelHealthLabel.text = aqiModel.aqiHealth
+        cityLabel.text = aqiModel.cityName
         
-        smogImage.alpha = CGFloat(aqiLevelValue) / CGFloat(AQILevel.very_unhealthy.rawValue)
+        smogImage.alpha = CGFloat(aqiModel.aqi ?? 0) / CGFloat(AQILevel.very_unhealthy.rawValue)
         urbanImage.alpha = 2 - smogImage.alpha
     }
-
+    
+    var aqiBeforeChanged = 0
+    @IBAction func onTouchDownSlider(_ sender: Any) {
+        aqiBeforeChanged = aqiModel.aqi ?? 0
+    }
+    
+    @IBAction func onChangedSlider(_ sender: Any) {
+        aqiModel.aqi = Int(aqiLevelSlider.value)
+        redrawView()
+    }
+    
+    @IBAction func onTouchUpSlider(_ sender: Any) {
+        aqiModel.aqi = aqiBeforeChanged
+        redrawView()
+    }
+    
     private func drawGradient4Slider() {
         let gradientLayer = CAGradientLayer()
         
         gradientLayer.frame = CGRect.init(x:0, y:0, width: aqiLevelSlider.frame.size.width, height:16)
         gradientLayer.colors = AQILevel.allCases.map({ (level) -> CGColor in level.color.cgColor })
         //gradientLayer.locations = AQILevel.allCases.map({ (level) -> NSNumber in NSNumber(value: level.rawValue / AQILevel.hazardous.rawValue) })
-        gradientLayer.locations = [0, 0.1, 0.2, 0.3, 0.4, 0.6]
+        gradientLayer.locations = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
         gradientLayer.startPoint = CGPoint.init(x:0.0, y:0.5)
         gradientLayer.endPoint = CGPoint.init(x:1.0, y:0.5)
          
@@ -115,6 +119,25 @@ class ViewController: UIViewController {
             aqiLevelSlider.setMinimumTrackImage(image, for: .normal)
             aqiLevelSlider.setMaximumTrackImage(image, for: .normal)
         }
+    }
+    
+    private func animateBackGround(_ moveRight: Bool = true) {
+        UIImageView.animate(
+            withDuration: 200.0,
+            delay: 0.0,
+            options: [.curveLinear],
+            animations: {
+                let direction: CGFloat = moveRight ? -1.0 : +1.0
+                self.urbanImage.frame.origin.x += (self.urbanImage.frame.width - UIScreen.main.bounds.width) * direction
+                self.smogImage.frame.origin.x += (self.smogImage.frame.width - UIScreen.main.bounds.width) * direction
+            },
+            completion: { finished in
+                self.animateBackGround(!moveRight)
+            }
+        )
+    }
+    
+    @IBAction func unwindSeque(seque: UIStoryboardSegue) {
     }
 }
 
@@ -143,24 +166,5 @@ extension UIColor {
         }
 
         return nil
-    }
-}
-
-// Animation
-extension ViewController {
-    private func animateBackGround(_ moveRight: Bool = true) {
-        UIImageView.animate(
-            withDuration: 1200.0,
-            delay: 0.0,
-            options: [.curveLinear],
-            animations: {
-                let direction: CGFloat = moveRight ? -1.0 : 1.0
-                self.urbanImage.frame.origin.x += (self.urbanImage.frame.width - UIScreen.main.bounds.width) * direction
-                self.smogImage.frame.origin.x += (self.smogImage.frame.width - UIScreen.main.bounds.width) * direction
-            },
-            completion: { finished in
-                self.animateBackGround(!moveRight)
-            }
-        )
     }
 }

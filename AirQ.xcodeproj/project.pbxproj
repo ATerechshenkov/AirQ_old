@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5521206C25A0B3890000371B /* AQIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5521206B25A0B3890000371B /* AQIService.swift */; };
+		5521206C25A0B3890000371B /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5521206B25A0B3890000371B /* HTTPService.swift */; };
+		553FE4E825AAFDAF0046A9BB /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553FE4E725AAFDAF0046A9BB /* InfoTableViewController.swift */; };
 		5579FB992599B07100171829 /* AQIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5579FB982599B07100171829 /* AQIModel.swift */; };
 		55F626C72598D4BA001B68E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F626C62598D4BA001B68E1 /* AppDelegate.swift */; };
 		55F626C92598D4BA001B68E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F626C82598D4BA001B68E1 /* SceneDelegate.swift */; };
-		55F626CB2598D4BA001B68E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F626CA2598D4BA001B68E1 /* ViewController.swift */; };
+		55F626CB2598D4BA001B68E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F626CA2598D4BA001B68E1 /* MainViewController.swift */; };
 		55F626CE2598D4BA001B68E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F626CC2598D4BA001B68E1 /* Main.storyboard */; };
 		55F626D02598D4BD001B68E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55F626CF2598D4BD001B68E1 /* Assets.xcassets */; };
 		55F626D32598D4BD001B68E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F626D12598D4BD001B68E1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5521206B25A0B3890000371B /* AQIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIService.swift; sourceTree = "<group>"; };
+		5521206B25A0B3890000371B /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
+		553FE4E725AAFDAF0046A9BB /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		5579FB982599B07100171829 /* AQIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIModel.swift; sourceTree = "<group>"; };
 		55F626C32598D4BA001B68E1 /* AirQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F626C62598D4BA001B68E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55F626C82598D4BA001B68E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		55F626CA2598D4BA001B68E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		55F626CA2598D4BA001B68E1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		55F626CD2598D4BA001B68E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55F626CF2598D4BD001B68E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55F626D22598D4BD001B68E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,13 +64,14 @@
 			children = (
 				55F626C62598D4BA001B68E1 /* AppDelegate.swift */,
 				55F626C82598D4BA001B68E1 /* SceneDelegate.swift */,
-				55F626CA2598D4BA001B68E1 /* ViewController.swift */,
+				55F626CA2598D4BA001B68E1 /* MainViewController.swift */,
+				553FE4E725AAFDAF0046A9BB /* InfoTableViewController.swift */,
 				55F626CC2598D4BA001B68E1 /* Main.storyboard */,
 				55F626CF2598D4BD001B68E1 /* Assets.xcassets */,
 				55F626D12598D4BD001B68E1 /* LaunchScreen.storyboard */,
 				55F626D42598D4BD001B68E1 /* Info.plist */,
 				5579FB982599B07100171829 /* AQIModel.swift */,
-				5521206B25A0B3890000371B /* AQIService.swift */,
+				5521206B25A0B3890000371B /* HTTPService.swift */,
 			);
 			path = AirQ;
 			sourceTree = "<group>";
@@ -143,9 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55F626CB2598D4BA001B68E1 /* ViewController.swift in Sources */,
-				5521206C25A0B3890000371B /* AQIService.swift in Sources */,
+				55F626CB2598D4BA001B68E1 /* MainViewController.swift in Sources */,
+				5521206C25A0B3890000371B /* HTTPService.swift in Sources */,
 				5579FB992599B07100171829 /* AQIModel.swift in Sources */,
+				553FE4E825AAFDAF0046A9BB /* InfoTableViewController.swift in Sources */,
 				55F626C72598D4BA001B68E1 /* AppDelegate.swift in Sources */,
 				55F626C92598D4BA001B68E1 /* SceneDelegate.swift in Sources */,
 			);
