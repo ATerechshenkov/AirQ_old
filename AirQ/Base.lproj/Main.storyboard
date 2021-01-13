@@ -89,7 +89,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PR0-ZP-hkk">
-                                        <rect key="frame" x="58.5" y="88" width="233" height="119.5"/>
+                                        <rect key="frame" x="58.5" y="88" width="233.5" height="119.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="158" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCU-dx-4FC">
                                                 <rect key="frame" x="0.0" y="0.0" width="153.5" height="119.5"/>
@@ -98,26 +98,47 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mM4-bX-aO6">
-                                                <rect key="frame" x="163.5" y="20" width="69.5" height="79.5"/>
+                                                <rect key="frame" x="163.5" y="20.5" width="70" height="78"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM 2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypD-6e-O0U">
-                                                        <rect key="frame" x="0.0" y="0.0" width="69.5" height="26.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFO-M3-SZ3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="26" id="2ad-Ru-ZxW"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us1-ww-URX">
-                                                        <rect key="frame" x="0.0" y="26.5" width="62" height="26.5"/>
+                                                        <state key="normal" title="PM 2.5">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPM25ButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XNd-em-cHX"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faa-1T-odk">
+                                                        <rect key="frame" x="0.0" y="26" width="62" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="26" id="y7n-Hq-Ehs"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AQI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3m-PB-ReK">
-                                                        <rect key="frame" x="0.0" y="53" width="37" height="26.5"/>
+                                                        <state key="normal" title="PM 10">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPM10ButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OBb-uo-yIY"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMc-WR-FmC">
+                                                        <rect key="frame" x="0.0" y="52" width="37" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="26" id="jxC-eW-ZCX"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <state key="normal" title="AQI">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onAQIButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tYC-Ca-wyC"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -180,9 +201,9 @@
                         <outlet property="aqiLevelValueLabel" destination="BCU-dx-4FC" id="Zsv-fe-eFJ"/>
                         <outlet property="cityLabel" destination="T5Q-Zz-1gh" id="bjx-RS-U3M"/>
                         <outlet property="infoButton" destination="lJ1-hA-Tqr" id="1iH-Vn-FiN"/>
-                        <outlet property="measureAQILabel" destination="k3m-PB-ReK" id="J2Y-vB-cug"/>
-                        <outlet property="measurePM10Label" destination="us1-ww-URX" id="k5U-pw-exT"/>
-                        <outlet property="measurePM25Label" destination="ypD-6e-O0U" id="UPs-VN-ztU"/>
+                        <outlet property="measureAQIButton" destination="XMc-WR-FmC" id="ifC-eW-UYd"/>
+                        <outlet property="measurePM10Button" destination="faa-1T-odk" id="NiX-gu-af5"/>
+                        <outlet property="measurePM25Button" destination="AFO-M3-SZ3" id="lz2-f6-Jnu"/>
                         <outlet property="smogImage" destination="pOC-DK-01F" id="lNK-Ko-g0f"/>
                         <outlet property="urbanImage" destination="tF3-1e-SWR" id="uJ1-zy-ZU1"/>
                     </connections>

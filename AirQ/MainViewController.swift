@@ -16,9 +16,10 @@ class MainViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet var cityLabel: UILabel!
-    @IBOutlet var measurePM25Label: UILabel!
-    @IBOutlet var measurePM10Label: UILabel!
-    @IBOutlet var measureAQILabel: UILabel!
+    
+    @IBOutlet var measureAQIButton: UIButton!
+    @IBOutlet var measurePM10Button: UIButton!
+    @IBOutlet var measurePM25Button: UIButton!
     
     @IBOutlet var infoButton: UIButton!
     @IBOutlet var aqiLevelValueLabel: UILabel!
@@ -55,9 +56,9 @@ class MainViewController: UIViewController {
         smogImage.isHidden = inProcess
         cityLabel.isHidden = inProcess
         infoButton.isHidden = inProcess
-        measureAQILabel.isHidden = inProcess
-        measurePM10Label.isHidden = inProcess
-        measurePM25Label.isHidden = inProcess
+        measureAQIButton.isHidden = inProcess
+        measurePM10Button.isHidden = inProcess
+        measurePM25Button.isHidden = inProcess
         aqiLevelValueLabel.isHidden = inProcess
         aqiLevelNameLabel.isHidden = inProcess
         aqiLevelSlider.isHidden = inProcess
@@ -97,6 +98,36 @@ class MainViewController: UIViewController {
     @IBAction func onTouchUpSlider(_ sender: Any) {
         aqiModel.aqi = aqiBeforeChanged
         redrawView()
+    }
+    
+    @IBAction func onAQIButtonClick(_ sender: Any) {
+        switchMeasure(.aqi)
+    }
+    
+    @IBAction func onPM10ButtonClick(_ sender: Any) {
+        switchMeasure(.pm10)
+    }
+
+    @IBAction func onPM25ButtonClick(_ sender: Any) {
+        switchMeasure(.pm25)
+    }
+    
+    private func switchMeasure(_ measure: AQIMeasure) {
+        measureAQIButton.isHighlighted = true
+        measurePM10Button.isHighlighted = true
+        measurePM25Button.isHighlighted = true
+        
+        switch measure {
+        case .aqi:
+            aqiLevelValueLabel.text = String(aqiModel.aqi ?? 0)
+            measureAQIButton.isHighlighted = false
+        case .pm10:
+            aqiLevelValueLabel.text = String(aqiModel.pm10 ?? 0)
+            measurePM10Button.isHighlighted = false
+        case .pm25:
+            aqiLevelValueLabel.text = String(aqiModel.pm25 ?? 0)
+            measurePM25Button.isHighlighted = false
+        }
     }
     
     private func drawGradient4Slider() {

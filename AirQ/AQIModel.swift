@@ -42,6 +42,8 @@ struct AQIModel {
     var pm25: Int?
     var pm10: Int?
     
+    var measure: AQIMeasure = .aqi
+    
     static func serialize(aqiData: AQIData?) -> AQIModel {
         var aqiModel = AQIModel()
         
@@ -63,6 +65,12 @@ struct AQIModel {
         
         return aqiModel
     }
+}
+
+enum AQIMeasure {
+    case pm25
+    case pm10
+    case aqi
 }
 
 enum AQILevel: Int, CaseIterable{
