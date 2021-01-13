@@ -37,8 +37,17 @@ class MainViewController: UIViewController {
           }
         }
         
-        loadingDataInProcess(inProcess: true)
         drawGradient4Slider()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadingDataInProcess(inProcess: true)
+        animateBackGround()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        //UIImageView.stopAnimating(UIImageView)
+        //urbanImage.stopAnimating()
     }
     
     private func loadingDataInProcess(inProcess: Bool) {
@@ -59,13 +68,11 @@ class MainViewController: UIViewController {
             activityIndicator.startAnimating()
         } else {
             activityIndicator.stopAnimating()
-            animateBackGround()
         }
     }
     
     // TODO: После вызова этого метода слетает анимация
     private func redrawView() {
-        print("call redrawView")
         aqiLevelValueLabel.text = String(aqiModel.aqi ?? 0)
         aqiLevelSlider.value = Float(aqiModel.aqi ?? 0)
         aqiLevelSlider.thumbTintColor = aqiModel.aqiColor
