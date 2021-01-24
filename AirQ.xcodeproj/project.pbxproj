@@ -3,25 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5521206C25A0B3890000371B /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5521206B25A0B3890000371B /* HTTPService.swift */; };
+		5521206C25A0B3890000371B /* AqiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5521206B25A0B3890000371B /* AqiService.swift */; };
 		553FE4E825AAFDAF0046A9BB /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553FE4E725AAFDAF0046A9BB /* InfoTableViewController.swift */; };
-		5579FB992599B07100171829 /* AQIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5579FB982599B07100171829 /* AQIModel.swift */; };
+		5579FB992599B07100171829 /* AqiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5579FB982599B07100171829 /* AqiModel.swift */; };
+		5598462025B5772800F20B4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598461F25B5772800F20B4B /* MapViewController.swift */; };
 		55F626C72598D4BA001B68E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F626C62598D4BA001B68E1 /* AppDelegate.swift */; };
 		55F626C92598D4BA001B68E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F626C82598D4BA001B68E1 /* SceneDelegate.swift */; };
 		55F626CB2598D4BA001B68E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F626CA2598D4BA001B68E1 /* MainViewController.swift */; };
 		55F626CE2598D4BA001B68E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F626CC2598D4BA001B68E1 /* Main.storyboard */; };
 		55F626D02598D4BD001B68E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55F626CF2598D4BD001B68E1 /* Assets.xcassets */; };
 		55F626D32598D4BD001B68E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F626D12598D4BD001B68E1 /* LaunchScreen.storyboard */; };
+		55F8BDC925BD66A600AB2F27 /* AqiResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F8BDC825BD66A600AB2F27 /* AqiResponseModel.swift */; };
+		BE3F507910561758E5F9B26D /* Pods_AirQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AC7F8BD574CAA79E923C53 /* Pods_AirQ.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5521206B25A0B3890000371B /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
+		5521206B25A0B3890000371B /* AqiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AqiService.swift; sourceTree = "<group>"; };
 		553FE4E725AAFDAF0046A9BB /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
-		5579FB982599B07100171829 /* AQIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIModel.swift; sourceTree = "<group>"; };
+		5579FB982599B07100171829 /* AqiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AqiModel.swift; sourceTree = "<group>"; };
+		5598461F25B5772800F20B4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		55F626C32598D4BA001B68E1 /* AirQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F626C62598D4BA001B68E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55F626C82598D4BA001B68E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +34,10 @@
 		55F626CF2598D4BD001B68E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55F626D22598D4BD001B68E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55F626D42598D4BD001B68E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55F8BDC825BD66A600AB2F27 /* AqiResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AqiResponseModel.swift; sourceTree = "<group>"; };
+		91AC7F8BD574CAA79E923C53 /* Pods_AirQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDCECBB3372D12C52BE89720 /* Pods-AirQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQ.release.xcconfig"; path = "Target Support Files/Pods-AirQ/Pods-AirQ.release.xcconfig"; sourceTree = "<group>"; };
+		ECAC043A7CEF499FFBD1D806 /* Pods-AirQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirQ.debug.xcconfig"; path = "Target Support Files/Pods-AirQ/Pods-AirQ.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE3F507910561758E5F9B26D /* Pods_AirQ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +57,8 @@
 			children = (
 				55F626C52598D4BA001B68E1 /* AirQ */,
 				55F626C42598D4BA001B68E1 /* Products */,
+				DE20CC527BAEA3A2A5BA3E40 /* Pods */,
+				7540BC2E9121CD2D248373F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,18 +73,37 @@
 		55F626C52598D4BA001B68E1 /* AirQ */ = {
 			isa = PBXGroup;
 			children = (
+				5579FB982599B07100171829 /* AqiModel.swift */,
+				55F8BDC825BD66A600AB2F27 /* AqiResponseModel.swift */,
+				5521206B25A0B3890000371B /* AqiService.swift */,
 				55F626C62598D4BA001B68E1 /* AppDelegate.swift */,
 				55F626C82598D4BA001B68E1 /* SceneDelegate.swift */,
 				55F626CA2598D4BA001B68E1 /* MainViewController.swift */,
+				5598461F25B5772800F20B4B /* MapViewController.swift */,
 				553FE4E725AAFDAF0046A9BB /* InfoTableViewController.swift */,
 				55F626CC2598D4BA001B68E1 /* Main.storyboard */,
 				55F626CF2598D4BD001B68E1 /* Assets.xcassets */,
 				55F626D12598D4BD001B68E1 /* LaunchScreen.storyboard */,
 				55F626D42598D4BD001B68E1 /* Info.plist */,
-				5579FB982599B07100171829 /* AQIModel.swift */,
-				5521206B25A0B3890000371B /* HTTPService.swift */,
 			);
 			path = AirQ;
+			sourceTree = "<group>";
+		};
+		7540BC2E9121CD2D248373F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91AC7F8BD574CAA79E923C53 /* Pods_AirQ.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE20CC527BAEA3A2A5BA3E40 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ECAC043A7CEF499FFBD1D806 /* Pods-AirQ.debug.xcconfig */,
+				CDCECBB3372D12C52BE89720 /* Pods-AirQ.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55F626D72598D4BD001B68E1 /* Build configuration list for PBXNativeTarget "AirQ" */;
 			buildPhases = (
+				019F72F6B46E393577631636 /* [CP] Check Pods Manifest.lock */,
 				55F626BF2598D4BA001B68E1 /* Sources */,
 				55F626C02598D4BA001B68E1 /* Frameworks */,
 				55F626C12598D4BA001B68E1 /* Resources */,
+				A034DFE7707EDF8C038E0737 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,17 +173,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		019F72F6B46E393577631636 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AirQ-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A034DFE7707EDF8C038E0737 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AirQ/Pods-AirQ-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AirQ/Pods-AirQ-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirQ/Pods-AirQ-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		55F626BF2598D4BA001B68E1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				55F626CB2598D4BA001B68E1 /* MainViewController.swift in Sources */,
-				5521206C25A0B3890000371B /* HTTPService.swift in Sources */,
-				5579FB992599B07100171829 /* AQIModel.swift in Sources */,
+				5521206C25A0B3890000371B /* AqiService.swift in Sources */,
+				5579FB992599B07100171829 /* AqiModel.swift in Sources */,
 				553FE4E825AAFDAF0046A9BB /* InfoTableViewController.swift in Sources */,
+				55F8BDC925BD66A600AB2F27 /* AqiResponseModel.swift in Sources */,
 				55F626C72598D4BA001B68E1 /* AppDelegate.swift in Sources */,
 				55F626C92598D4BA001B68E1 /* SceneDelegate.swift in Sources */,
+				5598462025B5772800F20B4B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +371,7 @@
 		};
 		55F626D82598D4BD001B68E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECAC043A7CEF499FFBD1D806 /* Pods-AirQ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,6 +392,7 @@
 		};
 		55F626D92598D4BD001B68E1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDCECBB3372D12C52BE89720 /* Pods-AirQ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

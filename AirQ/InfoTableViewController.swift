@@ -24,9 +24,9 @@ class InfoTableViewController: UITableViewController {
         
         cell.imageView?.image = UIImage(systemName: "app.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 36.0, weight: .regular))?.withTintColor(AQILevel.allCases[indexPath.row].color, renderingMode: .alwaysOriginal)
         
-        let from: Int = indexPath.row == 0 ? 0 : AQILevel.allCases[indexPath.row-1].rawValue + 1
-        let to: Int = AQILevel.allCases[indexPath.row].rawValue
-        cell.textLabel?.text = String(format: "%d…%d %@", from, to, AQILevel.allCases[indexPath.row].name)
+        let from: Int = indexPath.row == 0 ? 0 : AQILevel.allCases[indexPath.row-1].aqi + 1
+        let to: Int = AQILevel.allCases[indexPath.row].aqi
+        cell.textLabel?.text = String(format: "%d…%d %@", from, to, AQILevel.allCases[indexPath.row].rawValue)
         
         cell.detailTextLabel?.text = AQILevel.allCases[indexPath.row].health
         cell.detailTextLabel?.lineBreakMode = .byWordWrapping
