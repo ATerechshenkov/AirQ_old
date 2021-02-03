@@ -13,7 +13,6 @@ class MainViewController: UIViewController {
     var aqiModel: AqiModel!
     
     let aqiService = AqiService.shared
-    var location: CLLocationCoordinate2D!
     
     @IBOutlet var urbanImage: UIImageView!
     @IBOutlet var smogImage: UIImageView!
@@ -33,35 +32,49 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad()  {
         super.viewDidLoad()
-        
-        do {
-            self.location = try aqiService.getCurrentLocation()
-        } catch let e as AqiServiceError {
-            showAllert(title: e.alert, message: e.message)
-        } catch let e {
-            debugPrint(e)
-        }
-        
-        if let location = self.location {
-            aqiService.requestAqiData(byLocation: location) { [weak self] (model) in
-                guard let self = self else { return }
-                    
-                self.aqiModel = model
-                self.redrawView()
-                self.switchMeasure(self.aqiModel.measure ?? .aqi)
-                self.loadingDataInProcess(inProcess: false)
-            } errorHandler: { [weak self] (error) in
-                guard let self = self else { return }
-                
-                self.showAllert(title: error.localizedDescription, message: "")
-            }
-        }
-        loadingDataInProcess(inProcess: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
+            do {
+                let coordinate = try self.aqiService.spotMyLocation()
+                self.fetchAqiData(coordinate)
+            } catch let error as LocationError {
+                debugPrint(error)
+                DispatchQueue.main.async {
+                    self.showAllert(error.message)
+                }
+            } catch let error {
+                debugPrint(error)
+                DispatchQueue.main.async {
+                    self.showAllert(error.localizedDescription)
+                }
+            }
+        }
+        
         loadingDataInProcess(inProcess: true)
         animateBackGround()
+    }
+    
+    private func fetchAqiData(_ coordinate: CLLocationCoordinate2D) {
+        aqiService.fetchAqiData(byLocation: coordinate) { [weak self] (model) in
+            guard let self = self else { return }
+                
+            self.aqiModel = model
+            
+            DispatchQueue.main.async {
+                self.redrawView()
+                self.switchMeasure(self.aqiModel.measure ?? .aqi)
+                self.loadingDataInProcess(inProcess: false)
+            }
+        } errorHandler: { [weak self] (error) in
+            guard let self = self else { return }
+            
+            debugPrint(error)
+            DispatchQueue.main.async {
+                self.showAllert(error.localizedDescription)
+            }
+        }
     }
     
     private func loadingDataInProcess(inProcess: Bool) {
@@ -85,30 +98,29 @@ class MainViewController: UIViewController {
     }
     
     private func redrawView() {
-        aqiLevelValueLabel.text = String(aqiModel.aqi ?? 0)
-        aqiLevelSlider.value = Float(aqiModel.aqi ?? 0)
+        aqiLevelValueLabel.text = String(aqiModel.value ?? 0)
+        aqiLevelSlider.value = Float(aqiModel.value ?? 0)
         aqiLevelSlider.thumbTintColor = aqiModel.color
         aqiLevelNameLabel.text = aqiModel.name
         aqiLevelHealthLabel.text = aqiModel.health
         cityLabel.text = aqiModel.cityName
         
-        smogImage.alpha = CGFloat(aqiModel.aqi ?? 0) / CGFloat(AQILevel.very_unhealthy.aqi)
-        urbanImage.alpha = 2 - smogImage.alpha
+        smogImage.alpha = CGFloat(aqiModel.value ?? 0) / CGFloat(aqiModel.measure!.maxValue)
+        urbanImage.alpha = 1.5 - smogImage.alpha
     }
     
-    var aqiBeforeChanged = 0
+    var valueBeforeChanged = 0
     @IBAction func onTouchDownSlider(_ sender: Any) {
-        switchMeasure(.aqi)
-        aqiBeforeChanged = aqiModel.aqi ?? 0
+        valueBeforeChanged = aqiModel.value ?? 0
     }
     
     @IBAction func onChangedSlider(_ sender: Any) {
-        aqiModel.aqi = Int(aqiLevelSlider.value)
+        aqiModel.value = Int(aqiLevelSlider.value)
         redrawView()
     }
     
     @IBAction func onTouchUpSlider(_ sender: Any) {
-        aqiModel.aqi = aqiBeforeChanged
+        aqiModel.value = valueBeforeChanged
         redrawView()
     }
     
@@ -131,16 +143,14 @@ class MainViewController: UIViewController {
         
         switch measure {
         case .aqi:
-            aqiLevelValueLabel.text = String(aqiModel.aqi ?? 0)
             measureAQIButton.isHighlighted = false
         case .pm10:
-            aqiLevelValueLabel.text = String(aqiModel.pm10 ?? 0)
             measurePM10Button.isHighlighted = false
         case .pm25:
-            aqiLevelValueLabel.text = String(aqiModel.pm25 ?? 0)
             measurePM25Button.isHighlighted = false
         }
         aqiModel.measure = measure
+        redrawView()
         
         drawGradientScale(measure)
     }
@@ -191,8 +201,8 @@ class MainViewController: UIViewController {
     @IBAction func unwindSeque(seque: UIStoryboardSegue) {
     }
     
-    func showAllert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func showAllert(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(okAction)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

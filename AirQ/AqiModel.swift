@@ -37,6 +37,14 @@ struct AqiModel {
             case .none: return nil
             }
         }
+        set {
+            switch measure {
+            case .aqi: self.aqi = newValue
+            case .pm25: self.pm25 = newValue
+            case .pm10: self.pm10 = newValue
+            case .none: break
+            }
+        }
     }
     var measure: AQIMeasure?
     
@@ -48,14 +56,14 @@ struct AqiModel {
     }
     
     var color: UIColor? {
-        if let level = aqi, let measure = measure {
+        if let level = value, let measure = measure {
             return AQILevel.getLevel(level, measure: measure).color
         }
         return nil
     }
     
     var health: String? {
-        if let level = aqi, let measure = measure {
+        if let level = value, let measure = measure {
             return AQILevel.getLevel(level, measure: measure).health
         }
         return nil

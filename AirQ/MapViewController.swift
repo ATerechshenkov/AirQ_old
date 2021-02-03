@@ -31,15 +31,18 @@ class MapViewController: UIViewController {
     
     @IBAction func moveToUserLocation() {
         do {
-            if let coordinate = try aqiServices.getCurrentLocation() {
-                let region = MKCoordinateRegion(center: coordinate,
-                                                latitudinalMeters: regionInMetars,
-                                                longitudinalMeters: regionInMetars)
-                mapView.setRegion(region, animated: true)
-            }
-        } catch let e as AqiServiceError {
-            showAllert(title: e.alert, message: e.message)
-        } catch {}
+            let coordinate = try aqiServices.spotMyLocation()
+            let region = MKCoordinateRegion(center: coordinate,
+                                            latitudinalMeters: regionInMetars,
+                                            longitudinalMeters: regionInMetars)
+            mapView.setRegion(region, animated: true)
+        } catch let error as LocationError {
+            debugPrint(error)
+            showAllert(error.message)
+        } catch let error {
+            debugPrint(error)
+            showAllert(error.localizedDescription)
+        }
     }
 }
 
@@ -64,13 +67,17 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         do {
             try aqiServices.checkLocationAuthorization()
-        } catch let e as AqiServiceError {
-            showAllert(title: e.alert, message: e.message)
-        } catch {}
+        } catch let error as LocationError {
+            debugPrint(error)
+            showAllert(error.message)
+        } catch let error {
+            debugPrint(error)
+            showAllert(error.localizedDescription)
+        }
     }
     
-    func showAllert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func showAllert(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(okAction)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
