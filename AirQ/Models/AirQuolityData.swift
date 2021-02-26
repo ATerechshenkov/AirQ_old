@@ -8,19 +8,12 @@
 import Foundation
 import UIKit
 
-protocol AqiModelDelegate {
+protocol AqiQualityDataDelegate {
     func aqiModelDidUpdate()
 }
 
-struct AqiModel {
-    var city: String?
-    var cityName: String? {
-        if let city = city {
-            return String(city.prefix(while: { (char) -> Bool in char != "," }))
-        }
-        return nil
-    }
-    
+struct AirQualityData: Codable {
+    var stationName: String?
     var stationLatitude: Double?
     var stationLongitude: Double?
     
@@ -37,64 +30,75 @@ struct AqiModel {
             case .none: return nil
             }
         }
+        set {
+            switch measure {
+            case .aqi: self.aqi = newValue
+            case .pm25: self.pm25 = newValue
+            case .pm10: self.pm10 = newValue
+            case .none: break
+            }
+        }
     }
     var measure: AQIMeasure?
     
-    var name: String? {
-        if let level = aqi, let measure = measure {
-            return AQILevel.getLevel(level, measure: measure).rawValue
+    var level: String? {
+        if let value = value, let measure = measure {
+            return AQILevel.getLevel(value, measure: measure).rawValue
         }
         return nil
     }
     
     var color: UIColor? {
-        if let level = aqi, let measure = measure {
-            return AQILevel.getLevel(level, measure: measure).color
+        if let value = value, let measure = measure {
+            return AQILevel.getLevel(value, measure: measure).color
         }
         return nil
     }
     
     var health: String? {
-        if let level = aqi, let measure = measure {
-            return AQILevel.getLevel(level, measure: measure).health
+        if let value = value, let measure = measure {
+            return AQILevel.getLevel(value, measure: measure).health
         }
         return nil
     }
     
-    init(_ aqiResponse: AQIResponseModel) {
-        let data = aqiResponse.data
+    init(_ data: AQIData) {
         
-        if let aqi = data?.aqi {
-            self.aqi = Int(aqi)
-        }
+        // Непостонный параметр
+        // if let measure = data?.dominentpol {
+        //    self.measure = AQIMeasure(rawValue: measure)
+        // }
         
-        if let measure = data?.dominentpol {
-            self.measure = AQIMeasure(rawValue: measure)
-        }
-        
-        if let pm25 = data?.iaqi?.pm25?.v {
-            self.pm25 = Int(pm25)
-        }
-        
-        if let pm10 = data?.iaqi?.pm10?.v {
+        if let pm10 = data.iaqi?.pm10?.v {
             self.pm10 = Int(pm10)
+            self.measure = AQIMeasure.pm10
+        }
+        
+        if let aqi = data.iaqi?.aqi?.v {
+            self.aqi = Int(aqi)
+            self.measure = AQIMeasure.aqi
+        }
+        
+        if let pm25 = data.iaqi?.pm25?.v {
+            self.pm25 = Int(pm25)
+            self.measure = AQIMeasure.pm25
         }
  
-        if let city = data?.city?.name {
-            self.city = String(city.prefix(while: { (char) -> Bool in char != "," }))
+        if let stationName = data.city?.name {
+            self.stationName = stationName
         }
         
-        if let latitude = data?.city?.geo?[0] {
+        if let latitude = data.city?.geo?[0] {
             self.stationLatitude = Double(latitude)
         }
         
-        if let longitude = data?.city?.geo?[1] {
+        if let longitude = data.city?.geo?[1] {
             self.stationLongitude = Double(longitude)
         }
     }
 }
 
-enum AQIMeasure: String {
+enum AQIMeasure: String, Codable {
     case aqi
     case pm25
     case pm10
@@ -122,7 +126,7 @@ enum AQIMeasure: String {
     }
 }
 
-enum AQILevel: String, CaseIterable{
+enum AQILevel: String, CaseIterable, Codable {
     case good = "Good"
     case moderate = "Moderate"
     case sensitive = "Unhealthy for Sensitive Groups"

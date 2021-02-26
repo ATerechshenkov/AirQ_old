@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lB6-2k-2PZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1d7-eT-CE7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kr9-D8-Mfb">
-                                <rect key="frame" x="350" y="749" width="32" height="32"/>
+                                <rect key="frame" x="350" y="798" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="U7C-XO-640"/>
                                     <constraint firstAttribute="width" constant="32" id="Wpt-Jf-ccY"/>
@@ -52,45 +53,31 @@
             </objects>
             <point key="canvasLocation" x="-430.43478260869568" y="306.69642857142856"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="5My-lr-QFy">
+        <!--Page View Controller-->
+        <scene sceneID="bkP-YO-gye">
             <objects>
-                <tabBarController id="lB6-2k-2PZ" sceneMemberID="viewController">
-                    <tabBar key="tabBar" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="c1G-dW-MYo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemBlueColor"/>
-                        <color key="selectedImageTintColor" systemColor="systemBlueColor"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="tXo-WA-sQj"/>
-                        <segue destination="2B5-k2-IkX" kind="relationship" relationship="viewControllers" id="vpq-ik-WMC"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dba-ip-25J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1d7-eT-CE7" customClass="PageViewController" customModule="AirQ" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tso-cN-Cpe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1369" y="-34"/>
+            <point key="canvasLocation" x="-497" y="-1289"/>
         </scene>
         <!--My Air-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="AirQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CityViewController" id="BYZ-38-t0r" customClass="CityViewController" customModule="AirQ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BGDay" translatesAutoresizingMaskIntoConstraints="NO" id="tF3-1e-SWR">
-                                <rect key="frame" x="0.0" y="0.0" width="3700" height="896"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmogDay" translatesAutoresizingMaskIntoConstraints="NO" id="pOC-DK-01F">
-                                <rect key="frame" x="0.0" y="0.0" width="5400" height="813"/>
+                                <rect key="frame" x="0.0" y="-1058" width="5400" height="1920"/>
+                                <color key="backgroundColor" red="0.98662223052940501" green="0.98616986748194535" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="5400" id="M3I-rz-WqZ"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-xJ-zdY">
-                                <rect key="frame" x="32" y="132.5" width="350" height="332.5"/>
+                            <stackView opaque="NO" contentMode="bottomLeft" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-xJ-zdY">
+                                <rect key="frame" x="32" y="111.5" width="350" height="374.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almaty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5Q-Zz-1gh">
                                         <rect key="frame" x="124" y="0.0" width="102" height="41"/>
@@ -129,7 +116,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mM4-bX-aO6">
                                                 <rect key="frame" x="163.5" y="20.5" width="70" height="78"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMc-WR-FmC">
+                                                    <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMc-WR-FmC">
                                                         <rect key="frame" x="0.0" y="0.0" width="37" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="jxC-eW-ZCX"/>
@@ -155,7 +142,7 @@
                                                             <action selector="onPM10ButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OBb-uo-yIY"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFO-M3-SZ3">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFO-M3-SZ3">
                                                         <rect key="frame" x="0.0" y="52" width="70" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="2ad-Ru-ZxW"/>
@@ -178,16 +165,38 @@
                                             <constraint firstAttribute="height" constant="30" id="lkg-K1-Zsf"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="onChangedSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="MOA-fh-H1E"/>
-                                            <action selector="onTouchDownSlider:" destination="BYZ-38-t0r" eventType="touchDown" id="iYJ-At-uv1"/>
-                                            <action selector="onTouchUpSlider:" destination="BYZ-38-t0r" eventType="touchUpInside" id="866-nm-ILh"/>
-                                            <action selector="onTouchUpSlider:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="b36-rp-XXx"/>
+                                            <action selector="onSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="5kI-7Q-sAT"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9tI-km-h6x">
-                                        <rect key="frame" x="0.0" y="257.5" width="350" height="75"/>
+                                    <stackView opaque="NO" contentMode="left" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jbt-X9-43R">
+                                        <rect key="frame" x="0.0" y="257.5" width="350" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfX-2V-ABW">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="OEf-km-LQ0"/>
+                                                    <constraint firstAttribute="height" constant="32" id="Q8S-ao-TEi"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="globe" catalog="system" symbolScale="large"/>
+                                                </state>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almaty, US Embassy, Kazakhstan (Алматы, АҚШ елшілігі)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tI-km-h6x">
+                                                <rect key="frame" x="42" y="0.0" width="308" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="2sn-LT-FF1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BRB-7V-xUe">
+                                        <rect key="frame" x="0.0" y="299.5" width="350" height="75"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="2sn-LT-FF1"/>
+                                            <constraint firstAttribute="height" constant="75" id="2JO-Ce-est"/>
                                         </constraints>
                                         <string key="text">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -197,22 +206,20 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="p4o-dG-EZu" secondAttribute="trailing" id="1Zp-qh-cpg"/>
+                                    <constraint firstAttribute="trailing" secondItem="jbt-X9-43R" secondAttribute="trailing" id="VBu-wE-JEp"/>
                                     <constraint firstItem="p4o-dG-EZu" firstAttribute="leading" secondItem="rCh-xJ-zdY" secondAttribute="leading" id="gOL-VD-5gk"/>
+                                    <constraint firstItem="jbt-X9-43R" firstAttribute="leading" secondItem="rCh-xJ-zdY" secondAttribute="leading" id="qrd-45-G5E"/>
                                 </constraints>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dtk-i6-xQs">
-                                <rect key="frame" x="188.5" y="280" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pOC-DK-01F" firstAttribute="top" secondItem="tF3-1e-SWR" secondAttribute="top" id="4BQ-AA-fKj"/>
-                            <constraint firstItem="tF3-1e-SWR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5si-8f-vGe"/>
-                            <constraint firstItem="tF3-1e-SWR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="65f-XA-NEP"/>
-                            <constraint firstAttribute="bottom" secondItem="tF3-1e-SWR" secondAttribute="bottom" id="8Dc-q1-nre"/>
                             <constraint firstItem="dtk-i6-xQs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GMx-wW-kR1"/>
-                            <constraint firstItem="dtk-i6-xQs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="2/3" id="JNI-hj-RP2"/>
+                            <constraint firstItem="dtk-i6-xQs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JNI-hj-RP2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rCh-xJ-zdY" secondAttribute="trailing" constant="32" id="cbB-jE-8qS"/>
                             <constraint firstItem="rCh-xJ-zdY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="2/3" id="ghN-M5-Km8"/>
                             <constraint firstItem="rCh-xJ-zdY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="noJ-C6-RD0"/>
@@ -223,17 +230,18 @@
                     <tabBarItem key="tabBarItem" title="My Air" image="icloud.circle" catalog="system" id="Yug-mE-1hH"/>
                     <connections>
                         <outlet property="activityIndicator" destination="dtk-i6-xQs" id="3Y5-Da-CPa"/>
-                        <outlet property="aqiLevelHealthLabel" destination="9tI-km-h6x" id="kk6-4b-urg"/>
-                        <outlet property="aqiLevelNameLabel" destination="Xol-lb-QQi" id="U6g-vL-RT3"/>
-                        <outlet property="aqiLevelSlider" destination="p4o-dG-EZu" id="WbY-6s-alk"/>
-                        <outlet property="aqiLevelValueLabel" destination="BCU-dx-4FC" id="Zsv-fe-eFJ"/>
+                        <outlet property="aqiLevelHealthLabel" destination="BRB-7V-xUe" id="0ha-oo-Uv4"/>
                         <outlet property="cityLabel" destination="T5Q-Zz-1gh" id="bjx-RS-U3M"/>
                         <outlet property="infoButton" destination="lJ1-hA-Tqr" id="1iH-Vn-FiN"/>
+                        <outlet property="levelNameLabel" destination="Xol-lb-QQi" id="U6g-vL-RT3"/>
+                        <outlet property="levelSlider" destination="p4o-dG-EZu" id="WbY-6s-alk"/>
+                        <outlet property="levelValueLabel" destination="BCU-dx-4FC" id="Zsv-fe-eFJ"/>
                         <outlet property="measureAQIButton" destination="XMc-WR-FmC" id="ifC-eW-UYd"/>
                         <outlet property="measurePM10Button" destination="faa-1T-odk" id="NiX-gu-af5"/>
                         <outlet property="measurePM25Button" destination="AFO-M3-SZ3" id="lz2-f6-Jnu"/>
                         <outlet property="smogImage" destination="pOC-DK-01F" id="lNK-Ko-g0f"/>
-                        <outlet property="urbanImage" destination="tF3-1e-SWR" id="uJ1-zy-ZU1"/>
+                        <outlet property="stationButton" destination="xfX-2V-ABW" id="WLr-Tp-Oi3"/>
+                        <outlet property="stationNameLabel" destination="9tI-km-h6x" id="K5J-9x-9w7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -312,7 +320,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BGDay" width="3700" height="1920"/>
         <image name="SmogDay" width="4644" height="1920"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <image name="icloud.circle" catalog="system" width="128" height="121"/>
@@ -320,9 +327,6 @@
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
