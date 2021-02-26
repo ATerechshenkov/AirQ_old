@@ -13,7 +13,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView!
     
-    let aqiServices = AqiService.shared
+    let locationService = LocationService.shared
     
     var tileRenderer: MKTileOverlayRenderer!
     let regionInMetars = 10_000.0
@@ -31,24 +31,22 @@ class MapViewController: UIViewController {
     
     @IBAction func moveToUserLocation() {
         do {
-            let coordinate = try aqiServices.spotMyLocation()
+            let coordinate = try locationService.spotMyLocation()
             let region = MKCoordinateRegion(center: coordinate,
                                             latitudinalMeters: regionInMetars,
                                             longitudinalMeters: regionInMetars)
             mapView.setRegion(region, animated: true)
-        } catch let error as LocationError {
-            debugPrint(error)
-            showAllert(error.message)
+        } catch let error as LocationAllert {
+            showAllert(error)
         } catch let error {
-            debugPrint(error)
-            showAllert(error.localizedDescription)
+            showAllert(error)
         }
     }
 }
 
 extension MapViewController: MKMapViewDelegate {
     func initMapView() {
-        let overlay = MKTileOverlay(urlTemplate: aqiServices.aqiTilesUrl)
+        let overlay = MKTileOverlay(urlTemplate: NetworkService.aqiTilesUrl)
         self.mapView.addOverlay(overlay, level: .aboveLabels)
         tileRenderer = MKTileOverlayRenderer(tileOverlay: overlay)
         mapView.delegate = self
@@ -61,18 +59,15 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: CLLocationManagerDelegate {
     func initLocationManager() {
-        aqiServices.locationManager.delegate = self
+        locationService.locationManager.delegate = self
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         do {
-            try aqiServices.checkLocationAuthorization()
-        } catch let error as LocationError {
-            debugPrint(error)
-            showAllert(error.message)
+            try locationService.locationServicesEnabled()
         } catch let error {
             debugPrint(error)
-            showAllert(error.localizedDescription)
+            showAllert(error)
         }
     }
     

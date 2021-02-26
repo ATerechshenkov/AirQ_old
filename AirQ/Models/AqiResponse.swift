@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct AQIResponseModel: Codable {
-    var status: String?
-    var data: AQIData?
+struct AQIResponseError: Codable {
+    var status: String
+    var data: String
+}
+
+struct AQIResponse: Codable {
+    var status: String
+    var data: AQIData
 }
 
 struct AQIData: Codable {
@@ -35,8 +40,10 @@ struct AQIAttribute: Codable {
 }
 
 struct AQIMetrics: Codable {
+    var aqi: AQIValue?     // AQI
     var pm25: AQIValue?     // PM 2.5
     var pm10: AQIValue?     // PM 10
+    var pm1: AQIValue?      // PM 1
     var o3: AQIValue?       // Ozone
     var no2: AQIValue?      // Nitrogen Dioxide
     var so2: AQIValue?      // Sulphur Dioxide
